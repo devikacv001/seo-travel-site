@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
+/* ===============================
+   GLOBAL DESIGN TOKENS
+================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #080b14;
+  --bg-secondary: #0f172a;
+  --accent: #26f7ff;
+  --accent-2: #7c3aed;
+
+  --text-main: #e6ecff;
+  --text-muted: rgba(230, 236, 255, 0.72);
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 40px rgba(38, 247, 255, 0.2);
+
+  --radius-xl: 24px;
 }
 
+/* ===============================
+   TAILWIND BRIDGE
+================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-main);
+  --font-sans: var(--font-ui), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===============================
+   BASE (SAFE ROOT)
+================================ */
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-primary);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-ui), sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  position: relative;
 }
+
+/* ===============================
+   CINEMATIC BACKGROUND
+================================ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(1000px 600px at 15% 15%, rgba(38,247,255,.14), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(124,58,237,.12), transparent 55%),
+    radial-gradient(1000px 700px at 50% 85%, rgba(38,247,255,.08), transparent 65%),
+    linear-gradient(180deg,#0b1020 0%,#080b14 100%);
+}
+
+/* subtle noise */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* ===============================
+   ACCESSIBILITY
+================================ */
+*:focus-visible {
+  outline: 2px solid rgba(38,247,255,0.7);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+::selection {
+  background: rgba(38,247,255,0.22);
+  color: var(--text-main);
+}
+
+/* ===============================
+   SCROLLBAR
+================================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.18);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(38,247,255,0.26);
+}
+
+/* ===============================
+   MOTION
+================================ */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.m-reveal {
+  opacity: 0;
+  animation: riseIn 700ms cubic-bezier(.2,.75,.2,1) forwards;
+}
+
+.m-delay-1 { animation-delay:100ms; }
+.m-delay-2 { animation-delay:200ms; }
+.m-delay-3 { animation-delay:300ms; }
+.m-delay-4 { animation-delay:400ms; }
+
+.m-float {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+/* ===============================
+   GLASS SYSTEM
+================================ */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-xl);
+  position: relative;
+  z-index: 0;
+}
+
+.glass-hover {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.glass-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(38,247,255,.3);
+  box-shadow: var(--glass-shadow), var(--glow);
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================ */
+h1,h2,h3,h4 {
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===============================
+   LINE CLAMP
+================================ */
+.line-clamp-1,
+.line-clamp-2,
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-1 { -webkit-line-clamp:1; }
+.line-clamp-2 { -webkit-line-clamp:2; }
+.line-clamp-3 { -webkit-line-clamp:3; }

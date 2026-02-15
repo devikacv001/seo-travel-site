@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "munnar",
+    "name": "Munnar",
+    "country": "India",
+    "continent": "Asia",
+    "keywordTitle": "Munnar Travel Guide | Best Places to Visit in Munnar",
+    "bestPlaces": [
+      "Eravikulam National Park",
+      "Mattupetty Dam",
+      "Tea Gardens"
+    ],
+    "description": "Munnar is a scenic hill station in Kerala famous for tea plantations, misty mountains and cool climate.",
+    "costPerDay": "₹1500 - ₹3000 per day",
+    "image": "/images/munnar.jpg"
+  },
+
+  {
+    "slug": "wayanad",
+    "name": "Wayanad",
+    "country": "India",
+    "continent": "Asia",
+    "keywordTitle": "Wayanad Travel Guide | Nature & Waterfalls",
+    "bestPlaces": [
+      "Edakkal Caves",
+      "Soochipara Falls",
+      "Banasura Sagar Dam"
+    ],
+    "description": "Wayanad is a nature-rich destination filled with forests, waterfalls and wildlife experiences.",
+    "costPerDay": "₹1200 - ₹2500 per day",
+    "image": "/images/wayanad.jpg"
+  },
+
+  {
+    "slug": "goa",
+    "name": "Goa",
+    "country": "India",
+    "continent": "Asia",
+    "keywordTitle": "Goa Travel Guide | Beaches and Nightlife",
+    "bestPlaces": [
+      "Baga Beach",
+      "Fort Aguada",
+      "Anjuna Beach"
+    ],
+    "description": "Goa is a famous beach destination known for nightlife, seafood, water sports and relaxed coastal vibes.",
+    "costPerDay": "₹2000 - ₹4000 per day",
+    "image": "/images/goa.jpg"
+  },
+
+  {
+    "slug": "paris",
+    "name": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "keywordTitle": "Paris Travel Guide | Top Attractions in Paris",
+    "bestPlaces": [
+      "Eiffel Tower",
+      "Louvre Museum",
+      "Notre Dame Cathedral"
+    ],
+    "description": "Paris is the capital of France known for art, fashion, romantic streets and iconic landmarks.",
+    "costPerDay": "$120 - $200 per day",
+    "image": "/images/paris.jpg"
+  },
+
+  {
+    "slug": "tokyo",
+    "name": "Tokyo",
+    "country": "Japan",
+    "continent": "Asia",
+    "keywordTitle": "Tokyo Travel Guide | Best Things To Do in Tokyo",
+    "bestPlaces": [
+      "Shibuya Crossing",
+      "Tokyo Tower",
+      "Asakusa Temple"
+    ],
+    "description": "Tokyo blends futuristic city life with traditional Japanese culture, temples and world-class food.",
+    "costPerDay": "$100 - $180 per day",
+    "image": "/images/tokyo.jpg"
+  }
+]
